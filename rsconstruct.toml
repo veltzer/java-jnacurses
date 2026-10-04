@@ -6,14 +6,14 @@ reject_dot_src_dirs = true
 
 [analyzer.python]
 
-[processor.ruff]
+[processor.checker.ruff]
 src_dirs = ["scripts"]
 
 
-[processor.mypy]
+[processor.checker.mypy]
 src_dirs = ["scripts"]
 
-[processor.taplo]
+[processor.checker.taplo]
 src_files = [".rumdl.toml", "pyproject.toml", "rsconstruct.toml"]
 
 # ─── repo-specific configuration ────────────────────────────────────────────
@@ -23,7 +23,7 @@ src_files = [".rumdl.toml", "pyproject.toml", "rsconstruct.toml"]
 # scripts/build_lib.py runs that; the explicit processor keys it on the source
 # and declares the .so as the output. (The Makefile's install target was a
 # separate `sudo install` to /usr/lib -- a deploy action, not a build.)
-[processor.explicit.lib]
+[processor.explicit.generic.lib]
 command = "scripts/build_lib.py"
 inputs = ["jnacurses.c"]
 output_files = ["libjnacurses.so"]
@@ -35,17 +35,17 @@ system = [
 ]
 
 # lint the GitHub Actions workflow files with actionlint
-[processor.actionlint]
+[processor.checker.actionlint]
 src_dirs = [".github/workflows"]
 
 # ─── markdown ────────────────────────────────────────────────────────────────
 
-[processor.rumdl]
+[processor.checker.rumdl]
 src_files = ["README.md"]
 
 # ─── c / c++ ─────────────────────────────────────────────────────────────────
 
-[processor.cppcheck]
+[processor.checker.cppcheck]
 src_files = ["jnacurses.c"]
 args = [
 	"--error-exitcode=1",
