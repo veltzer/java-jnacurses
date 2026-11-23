@@ -54,11 +54,14 @@ src_files = ["README.md"]
 
 # ─── c / c++ ─────────────────────────────────────────────────────────────────
 
+# One single-file native library: one run over jnacurses.c.
 [processor.checker.cppcheck]
+dep_inputs = ["cppcheck.cfg"]
 src_files = ["jnacurses.c"]
 args = [
 	"--error-exitcode=1",
-	"--enable=warning,style,performance,portability",
+	"--enable=warning,style,performance,portability,information,unusedFunction",
 	"--check-level=exhaustive",
 	"--inline-suppr",
+	"--library=cppcheck.cfg",
 ]
