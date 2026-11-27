@@ -1,14 +1,10 @@
 #include<curses.h>
 
 int gety(WINDOW *win) {
-	int y,x;
-	getyx(win,y,x);
-	return y;
+	return getcury(win);
 }
 int getx(WINDOW *win) {
-	int y,x;
-	getyx(win,y,x);
-	return x;
+	return getcurx(win);
 }
 WINDOW* getStdscr(void) {
 	return stdscr;

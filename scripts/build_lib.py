@@ -11,7 +11,7 @@ import sys
 def main():
     """ main entry point """
     sys.exit(subprocess.call(
-        ["gcc", "-pedantic", "-shared", "-fpic", "-o", "libjnacurses.so",
+        ["gcc", "-Wall", "-Wextra", "-Werror", "-pedantic", "-shared", "-fpic", "-o", "libjnacurses.so",
          "jnacurses.c", "-lcurses"]))
 
 
